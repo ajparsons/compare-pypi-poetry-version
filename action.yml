@@ -6,7 +6,7 @@ inputs:
     required: true
 outputs:
   remote_exists:
-    description: "'true' or 'false' there is a pypi pitem for this repo"
+    description: "'true' or 'false' there is a pypi item for this repo"
     value: ${{ steps.get_version_status.outputs.remote_exists }}
   version_difference:
     description: "'true' or 'false' if there is a difference between poetry and pypi version"
@@ -15,7 +15,7 @@ outputs:
     description: "Current poetry semvar version"
     value: ${{ steps.get_version_status.outputs.poetry_version }}
   version_tags:
-    description: "json lists for tags for current version"
+    description: "space seperated lists for tags for current version"
     value: ${{ steps.get_version_tags.outputs.tags }}
 runs:
   using: "composite"
