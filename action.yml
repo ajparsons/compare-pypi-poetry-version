@@ -11,6 +11,12 @@ outputs:
   version_difference:
     description: "'true' or 'false' if there is a difference between poetry and pypi version"
     value: ${{ steps.get_version_status.outputs.version_difference }}
+  poetry_version:
+    description: "Current poetry semvar version"
+    value: ${{ steps.get_version_status.outputs.poetry_version }}
+  version_tags:
+    description: "json lists for tags for current version"
+    value: ${{ steps.get_version_tags.outputs.tags }}
 runs:
   using: "composite"
   steps:
@@ -36,3 +42,10 @@ runs:
       shell: bash
       env:
         pythonPackage: ${{ inputs.package_name }}
+
+    - name: get_version_tags
+      id: get_version_tags
+      run: get_tags.py
+      shell: python
+      env:
+        POETRY_VERSION: ${{ steps.get_version_status.outputs.poetry_version }}

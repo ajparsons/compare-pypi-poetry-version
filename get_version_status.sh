@@ -11,6 +11,8 @@ fi
 localVersion=$(python -m poetry version --short)
 diff=0
 
+echo '::set-output name=poetry_version::$localVersion'
+
 if [ $remoteExists -eq 1 ]
 then
     latestVersion=$(curl -Ls https://pypi.org/pypi/$pythonPackage/json | jq -r .info.version)
