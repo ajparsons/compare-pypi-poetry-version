@@ -45,7 +45,9 @@ runs:
 
     - name: get_version_tags
       id: get_version_tags
-      run: get_tags.py
-      shell: python
+      shell: bash
+      run: !
+        cd ${{ github.action_path }}
+        python get_tags.py
       env:
         POETRY_VERSION: ${{ steps.get_version_status.outputs.poetry_version }}
