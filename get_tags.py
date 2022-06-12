@@ -1,5 +1,4 @@
 import sys, os
-import json
 
 sem_var = os.environ.get("POETRY_VERSION", "")
 print(f"Current version is {sem_var}")
@@ -20,4 +19,5 @@ if (v := f"v{sem_var}") not in tags and sem_var:
     tags.append(v)
 
 print(tags)
-print(f"::set-output name=tags::{json.dumps(tags)}")
+space_seperated_tags = " ".join(tags)
+print(f"::set-output name=tags::{space_seperated_tags}")
