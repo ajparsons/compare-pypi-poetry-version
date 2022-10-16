@@ -31,12 +31,3 @@ runs:
       shell: bash
       env:
         pythonPackage: ${{ inputs.package_name }}
-
-    - name: get_version_tags
-      id: get_version_tags
-      shell: bash
-      run: |
-        cd ${{ github.action_path }}
-        python get_tags.py
-      env:
-        POETRY_VERSION: ${{ steps.get_version_status.outputs.repo_poetry_version }}
