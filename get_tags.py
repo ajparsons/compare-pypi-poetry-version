@@ -9,7 +9,6 @@ def add_to_step_output(**kwargs):
             f.write(f'\n"{k}"="{v}"')
 
 sem_var = os.environ.get("POETRY_VERSION", "")
-print(f"Current version is {sem_var}")
 tags = []
 
 if "-" not in sem_var:
@@ -26,7 +25,7 @@ if "-" not in sem_var:
 if (v := f"v{sem_var}") not in tags and sem_var:
     tags.append(v)
 
-print(tags)
+print("Tags that apply to this version: " +",".join(tags))
 space_seperated_tags = " ".join(tags)
 
 add_to_step_output(repo_poetry_version_tags=space_seperated_tags)

@@ -7,11 +7,14 @@ then
 else
     remoteExists=1
 fi
+echo "Pypi entry for $pythonPackage exists."
 
 localVersion=$(poetry version --short)
 diff=0
 
 echo "repo_poetry_version=$localVersion" >> $GITHUB_OUTPUT
+echo "Poetry version: $localVersion"
+
 
 if [ $remoteExists -eq 1 ]
 then
@@ -20,11 +23,13 @@ then
     then
         diff=1
     fi
+    echo "Pypi version: $latestVersion"
 fi
 
 if [ $diff -eq 1 ]
 then
     echo "pypi_version_difference=true" >> $GITHUB_OUTPUT
+    echo "Difference between local and pypi."
 else
     echo "pypi_version_difference=false" >> $GITHUB_OUTPUT
 fi
