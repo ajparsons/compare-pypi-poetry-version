@@ -5,18 +5,18 @@ inputs:
     description: 'Name of pypi package'
     required: true
 outputs:
-  remote_exists:
+  pypi_package_exists:
     description: "'true' or 'false' there is a pypi item for this repo"
-    value: ${{ steps.get_version_status.outputs.remote_exists }}
-  version_difference:
+    value: ${{ steps.get_version_status.outputs.pypi_package_exists }}
+  pypi_version_difference:
     description: "'true' or 'false' if there is a difference between poetry and pypi version"
-    value: ${{ steps.get_version_status.outputs.version_difference }}
-  poetry_version:
+    value: ${{ steps.get_version_status.outputs.pypi_version_difference }}
+  repo_poetry_version:
     description: "Current poetry semvar version"
-    value: ${{ steps.get_version_status.outputs.poetry_version }}
-  version_tags:
-    description: "space seperated lists for tags for current version"
-    value: ${{ steps.get_version_tags.outputs.tags }}
+    value: ${{ steps.get_version_status.outputs.pypi_poetry_version }}
+  repo_poetry_version_tags:
+    description: "Space seperated lists for tags for current version"
+    value: ${{ steps.get_version_tags.outputs.repo_poetry_version_tags }}
 runs:
   using: "composite"
   steps:
