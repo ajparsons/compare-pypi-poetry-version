@@ -18,8 +18,11 @@ runs:
   using: "composite"
   steps:
 
-    - name: Install Poetry
-      uses: snok/install-poetry@v1
+    - uses: SebRollen/toml-action@v1.0.0
+      id: read_toml
+      with:
+        file: 'pyproject.toml'
+        field: 'tool.poetry.version'
 
     - name: get_version_status
       id: get_version_status
@@ -28,3 +31,4 @@ runs:
       shell: bash
       env:
         pythonPackage: ${{ inputs.package_name }}
+        localVersion: ${{ steps.read_toml.outputs.value }}

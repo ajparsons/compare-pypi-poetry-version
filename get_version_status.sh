@@ -9,7 +9,6 @@ else
 fi
 echo "Pypi entry for $pythonPackage exists."
 
-localVersion=$(poetry version --short)
 diff=0
 
 echo "repo_poetry_version=$localVersion" >> $GITHUB_OUTPUT
