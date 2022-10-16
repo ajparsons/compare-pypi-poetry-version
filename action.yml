@@ -26,7 +26,8 @@ runs:
 
     - name: get_version_status
       id: get_version_status
-      run: get_version_status.sh
+      run: |
+        ${{ github.action_path }}/get_version_status.sh
       shell: bash
       env:
         pythonPackage: ${{ inputs.package_name }}
