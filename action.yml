@@ -13,10 +13,7 @@ outputs:
     value: ${{ steps.get_version_status.outputs.pypi_version_difference }}
   repo_poetry_version:
     description: "Current poetry semvar version"
-    value: ${{ steps.get_version_status.outputs.pypi_poetry_version }}
-  repo_poetry_version_tags:
-    description: "Space seperated lists for tags for current version"
-    value: ${{ steps.get_version_tags.outputs.repo_poetry_version_tags }}
+    value: ${{ steps.get_version_status.outputs.repo_poetry_version }}
 runs:
   using: "composite"
   steps:
