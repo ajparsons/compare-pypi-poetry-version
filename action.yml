@@ -24,13 +24,6 @@ runs:
     - name: Install Poetry
       uses: snok/install-poetry@v1
 
-    - name: Get version status
-      run:
-        get_version_status.sh
-
-    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-      shell: bash
-
     - name: get_version_status
       id: get_version_status
       run: get_version_status.sh
