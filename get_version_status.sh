@@ -8,10 +8,10 @@ else
     remoteExists=1
 fi
 
-localVersion=$(python -m poetry version --short)
+localVersion=$(poetry version --short)
 diff=0
 
-echo "::set-output name=poetry_version::$localVersion"
+echo "repo_poetry_version=$localVersion" >> $GITHUB_OUTPUT
 
 if [ $remoteExists -eq 1 ]
 then
@@ -24,14 +24,14 @@ fi
 
 if [ $diff -eq 1 ]
 then
-    echo '::set-output name=version_difference::true'
+    echo "pypi_version_difference=true" >> $GITHUB_OUTPUT
 else
-    echo '::set-output name=version_difference::false'
+    echo "pypi_version_difference=false" >> $GITHUB_OUTPUT
 fi
 
 if [ $remoteExists -eq 1 ]
 then
-    echo '::set-output name=remote_exists::true'
+    echo "pypi_package_exists=true" >> $GITHUB_OUTPUT
 else
-    echo '::set-output name=remote_exists::false'
+    echo "pypi_package_exists=true" >> $GITHUB_OUTPUT
 fi
