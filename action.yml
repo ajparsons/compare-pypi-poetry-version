@@ -18,7 +18,7 @@ runs:
   using: "composite"
   steps:
 
-    - uses: SebRollen/toml-action@v1.0.0
+    - uses: ajparsons/toml-action@main
       id: read_toml
       with:
         file: 'pyproject.toml'
