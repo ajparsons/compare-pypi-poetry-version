@@ -1,9 +1,40 @@
-# compare-pypi-poetry-version
+# Compare Pypi and Poetry version
 
-Github Action to compare pypi and poetry version of repo.
+Version: 1.0.0
 
-Takes `package_name` as an input (pypi package) - gives step output:
+Create outputs future steps can use depending if the pypi version is out of sync
 
-* `pypi_package_exists` - 'true' or 'false' there is a pypi item for this repo
-* `pypi_version_difference` - 'true' or 'false' if there is a difference between poetry and pypi version
-* `repo_poetry_version` - the current version in poetry (`poetry version --short`).
+## Usage
+
+```yaml
+
+# It is better practice to use the SHA hash of this tag rather than the tag itself.
+- uses: ajparsons/compare-pypi-poetry-version@v1
+  id: example-step 
+  with:
+    package_name: '' 
+
+```
+
+## Inputs
+
+### package_name
+
+Required.
+
+Name of pypi package
+
+## Outputs
+
+### pypi_package_exists
+
+'true' or 'false' there is a pypi item for this repo
+
+### pypi_version_difference
+
+'true' or 'false' if there is a difference between poetry and pypi version
+
+### repo_poetry_version
+
+Current poetry semvar version
+
