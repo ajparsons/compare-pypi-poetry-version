@@ -19,7 +19,7 @@ runs:
   using: "composite"
   steps:
 
-    - uses: ajparsons/get-config-value@fb1bb395ec07e8665c73a7b419bb44cf5cb11671 # v1.0.0
+    - uses: ajparsons/get-config-value@e360e43a7c254b56590f07c95ec8b810f8575ed6 # v1.0.0
       id: read_toml
       with:
         file: 'pyproject.toml'
